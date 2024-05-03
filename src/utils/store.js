@@ -1,12 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import productSlice from "../reducer/productreducer";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+import userSlice from "../reducer/userReducer";
 import { thunk } from "redux-thunk";
-import cartSlice from "../reducer/cartReducer";
+import apiMiddleware from "./middleware/apiMiddleware";
 
 export const store = configureStore({
-  reducer: {
-    product: productSlice.reducer,
-    cart: cartSlice.reducer
-  },
-  middleware: () => [thunk]
+  reducer: userSlice.reducer,
+  middleware: () => [thunk, apiMiddleware]
 });
